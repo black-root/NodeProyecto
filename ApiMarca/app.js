@@ -39,6 +39,16 @@ app.get('/marcas', (req, res) => {
        res.status(200).json(results);
    });
 });
+//select by id
+app.get("/marcas/:id", (req, res) => {
+    let sql = `SELECT * FROM marca WHERE idMarca = ${req.params.id} `;
+    let query = db.query(sql, (err, results) => {
+        if (err) throw err;
+        console.log(results);
+        res.status(200).json(results);
+    });
+});
+
 
 
 app.listen('3000', () =>
