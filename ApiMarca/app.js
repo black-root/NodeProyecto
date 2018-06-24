@@ -1,4 +1,14 @@
-const express = require('express');
+var express = require('express');
+var bodyParser = require('body-parser');
+var app = express();
+
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
+
+
+
 const mysql = require('mysql');
 
 //crear conexion
@@ -11,6 +21,8 @@ const db = mysql.createConnection({
 
 });
 
+
+
 //Conectar
 db.connect((err) => {
     if(err){
@@ -18,8 +30,6 @@ db.connect((err) => {
     }
     console.log("Mysql Conectado...");
 });
-
-const app = express();
 
 
 app.get('/createdb',(req, res) =>{
@@ -35,7 +45,7 @@ app.get('/marcas', (req, res) => {
    let sql = 'SELECT * FROM marca';
    let query = db.query(sql, (err, results) => {
        if(err) throw err;
-       console.log(results);
+       //console.log(results);
        res.status(200).json(results);
    });
 });
@@ -44,11 +54,36 @@ app.get("/marcas/:id", (req, res) => {
     let sql = `SELECT * FROM marca WHERE idMarca = ${req.params.id} `;
     let query = db.query(sql, (err, results) => {
         if (err) throw err;
-        console.log(results);
+        //console.log(results);
         res.status(200).json(results);
     });
 });
 
+app.post('/marcas', (req, res) => {
+    //console.log(req.body);
+    const marcaData = {
+        idMarca: null,
+        nombreMarca: req.body.nombreMarca,
+        descripcion: req.body.descripcion,
+        email: req.body.email,
+        telefono: req.body.telefono,
+        website: req.body.website,
+        direccion: req.body.direccion
+    }
+
+    let sql = `INSERT INTO marca SET ? `;
+    let query = db.query(sql, marcaData, (err, results) => {
+        if (err) throw err;
+        console.log(results);
+        res.json({
+            success: true,
+            msg: 'Marca Insertada',
+            data: marcaData
+        });
+    });
+
+
+});
 
 
 app.listen('3000', () =>
