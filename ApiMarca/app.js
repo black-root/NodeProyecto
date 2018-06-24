@@ -85,7 +85,51 @@ app.post('/marcas', (req, res) => {
 
 });
 
+/*
+app.put('/marcas/:id', (req, res) =>{
+console.log(req.body);
+    const marcaData = {
+        idMarca: null,
+        nombreMarca: req.body.nombreMarca,
+        descripcion: req.body.descripcion,
+        email: req.body.email,
+        telefono: req.body.telefono,
+        website: req.body.website,
+        direccion: req.body.direccion
+    }
 
+
+    let sql = `UPDATE marca SET 
+     idMarca = ${marcaData.idMarca},
+     nombreMarca = '${marcaData.nombreMarca}',
+     descripcion = '${marcaData.descripcion}',
+     email = '${marcaData.email}',
+     telefono = '${marcaData.telefono}',
+     website = '${marcaData.website}',
+     direccion = '${marcaData.direccion}'
+     WHERE idMarca = ${req.params.id}`;
+
+
+    let query = db.query(sql, (err, results) => {
+        if (err) throw err;
+        console.log(results);
+        res.json({
+            success: true,
+            msg: 'Marca actualizada',
+            data: marcaData
+        });
+    });
+});
+*/
+
+app.delete('/marcas/:id', (req, res) =>{
+    let sql = `DELETE FROM marca WHERE idMarca = ${req.params.id}`;
+    let query = db.query(sql, (err, result) =>{
+       if(err) throw err;
+       console.log(result);
+       res.send('delete..')
+    });
+});
 app.listen('3000', () =>
     {
         console.log('Server inicio en el puerto 3000')
