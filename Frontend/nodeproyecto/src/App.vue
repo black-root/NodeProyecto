@@ -3,7 +3,7 @@
             <div id="content" class="ui basic segment">
                 <h3 class="ui header">List of Users</h3>
                 <vuetable
-                    api-url="http://example.app:8000/api/users"
+                    api-url="http://localhost:3000/marcas"
                     table-wrapper="#content"
                     :fields="columns"
                     :item-actions="itemActions"
@@ -16,15 +16,15 @@
 	        el: '#app',
 	        data: {
 	            columns: [
-	                'name',
-	                'nickname',
-	                'email',
-	                'birthdate',
-	                'gender',
-	                '__actions'
+	                'Id',
+	                'Nombre',
+	                'Descripcion',
+	                'e-mail',
+	                'Telefono',
+	                'Website'
 				],
 	            itemActions: [
-	                { name: 'view-item', label: '', icon: 'zoom icon', class: 'ui teal button' },
+	               // { name: 'view-item', label: '', icon: 'zoom icon', class: 'ui teal button' },
 	                { name: 'edit-item', label: '', icon: 'edit icon', class: 'ui orange button'},
 	                { name: 'delete-item', label: '', icon: 'delete icon', class: 'ui red button' }
 	            ]
