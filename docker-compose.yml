@@ -12,9 +12,9 @@ services:
             mantenimiento_net:
                 ipv4_address: 172.25.0.28
     apinode:
-        image: 'nodetpi'
-        build: ./Frontend/.
-        container_name: 'nodetpi'
+        image: 'nodeapi'
+        build: ./ApiMarca/.
+        container_name: 'nodeapi'
         depends_on:
             - db
         ports:
@@ -22,6 +22,14 @@ services:
         networks: 
             mantenimiento_net:
                 ipv4_address: 172.25.0.30
+    frontend:
+        image: 'nodeFrontend'
+        build: ./Frontend/.
+        container_name: 'nodeFrontend'
+        depends_on: 
+            - apinode
+        ports: 
+        
 networks: 
     mantenimiento_net:
         ipam:
