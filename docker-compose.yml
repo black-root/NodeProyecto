@@ -1,37 +1,43 @@
 version: '3.5'
 services:
     bd:
-        image: 'mariadbTPI'
+        image: 'mariadbnode'
         build: ./MariaDB/.
-        container_name: 'mariatpi'
+        container_name: 'marianode'
         environment: 
             - 'MYSQL_ROOT_PASSWORD=root'
         ports:
-            - '3300:3306'
+            - '3306:3306'
         networks: 
-            mantenimiento_net:
+            node_net:
                 ipv4_address: 172.25.0.28
     apinode:
         image: 'nodeapi'
         build: ./ApiMarca/.
         container_name: 'nodeapi'
+        command: sh -c './wait-for db:3306' 
         depends_on:
-            - db
+            - bd
         ports:
             - '3000:3000'
         networks: 
-            mantenimiento_net:
+            node_net:
                 ipv4_address: 172.25.0.30
     frontend:
-        image: 'nodeFrontend'
+        image: 'nodefrontend'
         build: ./Frontend/.
         container_name: 'nodeFrontend'
+        command: sh -c './wait-for nodeapi:3000'
         depends_on: 
             - apinode
         ports: 
+            - '8080:8080'
+        networks: 
+            node_net:
+                ipv4_address: 172.25.0.31
         
 networks: 
-    mantenimiento_net:
+    node_net:
         ipam:
             driver: default
             config:
