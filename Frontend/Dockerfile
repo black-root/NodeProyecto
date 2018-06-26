@@ -1,9 +1,9 @@
-FROM node:9.11.1-alpine
-RUN npm install -g http-server
-RUN mkdir /app
-COPY . /app
-RUN ls
-WORKDIR /app/nodeproyecto
+FROM node:10-alpine
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+COPY package.json /usr/src/app
+COPY . /usr/src/app
 RUN npm install
-EXPOSE 8080
-CMD npm run dev
+CMD ["dockerize", "-wait http://172.25.0.29:8181/MantenimientoTPI-web"]
+ENTRYPOINT node server.js
+EXPOSE 3000

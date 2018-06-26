@@ -1,0 +1,42 @@
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+	border: none;
+	outline: none;
+}
+body{
+    background-color: whitesmoke;
+}
+
+
+nav{
+    height: 2em;
+    background-color: rgb(77, 22, 22);
+    font-family: 'Roboto', sans-serif;
+    padding: 1em;
+    width: 100%;
+}
+nav ul{
+    margin-left: 1em;
+    list-style: none;
+
+}
+nav ul li{
+    display: inline-block;
+    padding-left: 1em;
+
+}
+nav ul li:hover{
+   color: red;
+
+}
+nav ul li a{
+    color: whitesmoke;
+    margin-right: 0.5em;
+    text-align: center;
+}
+nav ul li a i{
+    margin-right: 0.5em;
+}

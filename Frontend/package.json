@@ -1,11 +1,22 @@
 {
-  "name": "nodeproyecto",
+  "name": "Frontend",
   "version": "1.0.0",
-  "description": "frontend para el proyecto en node, utilizando docker en windows",
-  "main": "index.js",
+  "description": "Frontend de Mantenimiento PC",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
-  "author": "vktor",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Vktor/Tabla-Dinamica.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "express": "^4.16.3",
+    "mocha": "^5.2.0"
+  }
 }
