@@ -1,6 +1,6 @@
 export default class AbstractResource {
     constructor() {
-        this.baseURL = `http://localhost:8080/MantenimientoTPI-web/webresources/`;
+        this.baseURL = `http://172.25.0.30:3000/`;
     }
 
     /*

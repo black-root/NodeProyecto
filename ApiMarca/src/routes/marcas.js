@@ -4,7 +4,7 @@ const router = express.Router();
 const mysqlConnection  = require('../database.js');
 
 // GET all Employees
-router.get('MantenimientoTPI-web/webresources/marcas', (req, res) => {
+router.get('/marcas', (req, res) => {
     let sql = 'SELECT * FROM marca';
     mysqlConnection.query(sql, (err, results) => {
         if(err) throw err;
@@ -13,7 +13,7 @@ router.get('MantenimientoTPI-web/webresources/marcas', (req, res) => {
     });
 });
 //select by id
-router.get("MantenimientoTPI-web/webresources/marcas/:id", (req, res) => {
+router.get("/marcas/:id", (req, res) => {
     let sql = `SELECT * FROM marca WHERE idMarca = ${req.params.id} `;
     mysqlConnection.query(sql, (err, results) => {
         if (err) throw err;
@@ -22,7 +22,7 @@ router.get("MantenimientoTPI-web/webresources/marcas/:id", (req, res) => {
     });
 });
 
-router.post('MantenimientoTPI-web/webresources/marcas', (req, res) => {
+router.post('/marcas', (req, res) => {
     //console.log(req.body);
     const marcaData = {
         idMarca: null,
@@ -48,7 +48,7 @@ router.post('MantenimientoTPI-web/webresources/marcas', (req, res) => {
 
 });
 
-router.delete('MantenimientoTPI-web/webresources/marcas/:id', (req, res) =>{
+router.delete('/marcas/:id', (req, res) =>{
     let sql = `DELETE FROM marca WHERE idMarca = ${req.params.id}`;
     mysqlConnection.query(sql, (err, result) =>{
         if(err) throw err;
