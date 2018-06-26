@@ -1,9 +1,9 @@
-FROM node:10-alpine
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-COPY package.json /usr/src/app
-ADD ./nodeproyecto /usr/src/app
-RUN chmod 777 wait-for
+FROM node:9.11.1-alpine
+RUN npm install -g http-server
+RUN mkdir /app
+COPY . /app
+RUN ls
+WORKDIR /app/nodeproyecto
 RUN npm install
-ENTRYPOINT sh -c './wait-for 172.25.0.28:3306 -- npm run dev' 
 EXPOSE 8080
+CMD npm run dev

@@ -1,9 +1,11 @@
 FROM node:10-alpine
-RUN mkdir -p /usr/src/app
+RUN mkdir -p /usr/src/
 WORKDIR /usr/src/app
+COPY wait-for /usr/local/bin
+RUN chmod 777 /usr/local/bin/wait-for
 COPY package.json /usr/src/app
 COPY . /usr/src/app
 RUN npm install
 RUN chmod 777 wait-for
-ENTRYPOINT sh -c './wait-for 172.25.0.28:3306 -- node app.js' 
+ENTRYPOINT node ./src/index.js
 EXPOSE 3000
