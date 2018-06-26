@@ -7,6 +7,13 @@ class dinamicForm extends HTMLElement {
     connectedCallback(){
         const shadow = this.attachShadow({ mode: 'open' });
 
+        //Estilos del formulario
+        let estilos = document.createElement('style');
+        //estilos.innerText = '@import "wc-form.css";';
+        estilos.innerText = 'input,textarea{padding:10px 18px;box-sizing:border-box;float:right;border-width:1px;border-style:solid;border-color:gray}*{margin:0;padding:0;list-style:none;text-decoration:none;border:none;outline:0;font-family:Roboto,sans-serif}input{margin-bottom:20px;width:100%}textarea{margin:8px 0;width:100%;}label{padding:10px 18px 10px 0;float:left}#postButton{width:30%}';
+        shadow.appendChild(estilos);
+
+
         //clase que contiene los metodos get, post, put, delete
         let connection= new AbstractResource();
         let entidad = this.getAttribute('entidad');
