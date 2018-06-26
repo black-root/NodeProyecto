@@ -3,7 +3,11 @@
             <div id="content" class="ui basic segment">
                 <h3 class="ui header">List of Users</h3>
                 <vuetable
+<<<<<<< HEAD
                     api-url="https://jsonplaceholder.typicode.com/users"
+=======
+                    api-url="http://172.25.0.30:3000/marcas"
+>>>>>>> Fronted
                     table-wrapper="#content"
                     :fields="columns"
                     :item-actions="itemActions"
