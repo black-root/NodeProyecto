@@ -3,45 +3,10 @@ const router = express.Router();
 
 const mysqlConnection  = require('../database.js');
 
-<<<<<<< HEAD:ApiMarca/app.js
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
 
-const mysql = require('mysql');
-
-//crear conexion
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'mantenimiento',
-    port: '3300'
-
-});
-
-
-
-//Conectar
-db.connect((err) => {
-    if(err){
-        throw err;
-    }
-    console.log("Mysql Conectado...");
-});
-
-
-app.get('/createdb',(req, res) =>{
-    let sql = 'CREATE DATABASE mantenimiento2';
-    db.query(sql, (err, result) =>{
-=======
-// GET all Employees
 router.get('/marcas', (req, res) => {
     let sql = 'SELECT * FROM marca';
     mysqlConnection.query(sql, (err, results) => {
->>>>>>> Fronted:ApiMarca/src/routes/marcas.js
         if(err) throw err;
         //console.log(results);
         res.status(200).json(results);
